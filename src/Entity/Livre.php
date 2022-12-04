@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\LivreRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -25,6 +27,18 @@ class Livre
 
     #[ORM\Column]
     private ?int $prix = null;
+
+    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'livres')]
+    private Collection $category;
+
+    #[ORM\ManyToMany(targetEntity: panier::class, inversedBy: 'livres')]
+    private Collection $panier;
+
+    public function __construct()
+    {
+        $this->category = new ArrayCollection();
+        $this->panier = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -75,6 +89,54 @@ class Livre
     public function setPrix(int $prix): self
     {
         $this->prix = $prix;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Category>
+     */
+    public function getCategory(): Collection
+    {
+        return $this->category;
+    }
+
+    public function addCategory(Category $category): self
+    {
+        if (!$this->category->contains($category)) {
+            $this->category->add($category);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): self
+    {
+        $this->category->removeElement($category);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, panier>
+     */
+    public function getPanier(): Collection
+    {
+        return $this->panier;
+    }
+
+    public function addPanier(panier $panier): self
+    {
+        if (!$this->panier->contains($panier)) {
+            $this->panier->add($panier);
+        }
+
+        return $this;
+    }
+
+    public function removePanier(panier $panier): self
+    {
+        $this->panier->removeElement($panier);
 
         return $this;
     }
