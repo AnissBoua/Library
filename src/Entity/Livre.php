@@ -31,7 +31,7 @@ class Livre
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'livres')]
     private Collection $category;
 
-    #[ORM\ManyToMany(targetEntity: panier::class, inversedBy: 'livres')]
+    #[ORM\ManyToMany(targetEntity: Panier::class, inversedBy: 'livres')]
     private Collection $panier;
 
     #[ORM\ManyToOne(inversedBy: 'livres')]
@@ -128,7 +128,7 @@ class Livre
         return $this->panier;
     }
 
-    public function addPanier(panier $panier): self
+    public function addPanier(Panier $panier): self
     {
         if (!$this->panier->contains($panier)) {
             $this->panier->add($panier);
@@ -137,7 +137,7 @@ class Livre
         return $this;
     }
 
-    public function removePanier(panier $panier): self
+    public function removePanier(Panier $panier): self
     {
         $this->panier->removeElement($panier);
 
