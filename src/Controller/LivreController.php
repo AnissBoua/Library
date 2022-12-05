@@ -13,10 +13,18 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/livre')]
 class LivreController extends AbstractController
 {
+    #[Route('/admin', name: 'app_livre_admin', methods: ['GET'])]
+    public function indexAdmin(LivreRepository $livreRepository): Response
+    {
+        return $this->render('livre/index.html.twig', [
+            'livres' => $livreRepository->findAll(),
+        ]);
+    }
+
     #[Route('/', name: 'app_livre_index', methods: ['GET'])]
     public function index(LivreRepository $livreRepository): Response
     {
-        return $this->render('livre/index.html.twig', [
+        return $this->render('maleklivre/index.html.twig', [
             'livres' => $livreRepository->findAll(),
         ]);
     }

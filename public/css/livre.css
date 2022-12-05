@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  .menu{
+    width: 85%;
+    margin: auto;
+    padding: 35px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0px;
+    background: #e89f80;
+
+}
+
+.menu li{
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    position: relative;
+
+}
+
+
+.menu  li::after{
+    content: '';
+    height: 3px;
+    width: 0;
+    background: #de4807;
+    position: absolute;
+    left: 0;
+    transition: 0.5s;    bottom: -7px;
+
+}
+
+.menu  li:hover::after{
+    width: 100%;
+}
+
+.corps{ display: block;
+    margin: 20px 0;
+
+}
+.img{
+    width: 120px;
+     margin: 5px;
+
+}
+
+.livre{
+    border: 3px solid #722a1b;
+    background-color: #fff;
+  float: left;
+  margin: 0 10px 10px 0;
+  width: 205px;
+  padding: 10px;
+  height: 290px;
+}
+button {
+    border: 1px solid #722a1b;
+    padding: 4px 14px;
+    background-color: #fff;
+    color: #722a1b;
+    text-transform: uppercase;
+    float: right;
+    margin: 5px 0;
+    font-weight: bold;
+    cursor: pointer;
+  }
+span{
+    float: right;
+}
+  .shopping-cart {
+    display: inline-block;
+    background: url("http://cdn1.iconfinder.com/data/icons/jigsoar-icons/24/_cart.png")
+      no-repeat 0 0;
+    width: 24px;
+    height: 24px;
+    margin: 0 10px 0 0;
+  }
