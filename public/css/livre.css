@@ -1,7 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-  }
+
   .menu{
     width: 85%;
     margin: auto;
@@ -40,30 +37,35 @@
 
 .corps{ display: block;
     margin: 20px 0;
-
 }
+
 .img{
     width: 120px;
      margin: 5px;
 
 }
 
+.livre_container{
+  display: flex;
+  margin: 1em 5em;
+}
 .livre{
     border: 3px solid #722a1b;
     background-color: #fff;
-  float: left;
-  margin: 0 10px 10px 0;
-  width: 205px;
-  padding: 10px;
-  height: 290px;
+    margin: 0 10px 10px 0;
+    width: 205px;
+    padding: 10px;
 }
-button {
+
+.livre_ajout{
+  display: flex;
+}
+.add-to-cart {
     border: 1px solid #722a1b;
     padding: 4px 14px;
     background-color: #fff;
     color: #722a1b;
     text-transform: uppercase;
-    float: right;
     margin: 5px 0;
     font-weight: bold;
     cursor: pointer;

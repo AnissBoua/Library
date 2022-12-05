@@ -37,6 +37,9 @@ class Livre
     #[ORM\ManyToOne(inversedBy: 'livres')]
     private ?Auteur $auteur = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
+
     public function __construct()
     {
         $this->category = new ArrayCollection();
@@ -152,6 +155,18 @@ class Livre
     public function setAuteur(?Auteur $auteur): self
     {
         $this->auteur = $auteur;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
