@@ -5,6 +5,15 @@
 {% block body %}
 
     <div>
-        <h1>My Account</h1>
+        <h1>Your Account</h1>
+        <div>
+            <p>{{app.user.nom}}</p>
+            <p>{{app.user.prenom}}</p>
+            <p>{{app.user.email}}</p>
+        </div>
+        {% if 'ROLE_ADMIN' in app.user.roles %}
+            <a href="{{ path('app_dashboard')}}"><button>Dashboard</button></a>
+        {% endif %}
+        
     </div>
 {% endblock %}
