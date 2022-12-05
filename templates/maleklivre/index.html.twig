@@ -3,238 +3,31 @@
 {% block title %}Hello LivreController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="livre.css" />
-<meta charset="UTF-8">
-<title>Librairie en ligne</title>
-</head>
-<div class="entete">
-   <h1>Site de Librairie</h1> 
-</div>
-
-<div class="menu">
-  <li class="Statistiques">Statistiques</li>
-  <li class="Romans">Romans</li>
-  <li class="Science">Science</li>
-</div>
-
-<div class="principal">
-
-  <div class="corps">
-
-
-    <div class="livre">
-  <h1> Quatrevingt-treize</h1>
-
-<div>
-<img class="img" src="{{ asset('img/book.png')}} ">
-</div>
-
-      <h2> {{livres[0].titre}}</h2>
-      <p>Roman de Victor Hugo sur la Révolution Française. </p>
-      <p class="commentaire">Nombre de commentaires: 240</p>
-       <button class="add-to-cart" type="button">Ajouter au panier</button>
-        </div>
-    </div>
-
-
-
-    <div class="livre">
-  <h1> Quatrevingt-treize</h1>
-
-<div>
-<img class="img" src="{{ asset('img/book.png')}} ">
-</div>
-
-      <h2> {{livres[0].titre}}</h2>
-      <p>Roman de Victor Hugo sur la Révolution Française. </p>
-      <p class="commentaire">Nombre de commentaires: 240</p>
-       <button class="add-to-cart" type="button">Ajouter au panier</button>
-        </div>
-    </div>
-
-
-
-    <div class="livre">
-  <h1> Quatrevingt-treize</h1>
-
-<div>
-<img class="img" src="{{ asset('img/book.png')}} ">
-</div>
-
-      <h2> {{livres[0].titre}}</h2>
-      <p>Roman de Victor Hugo sur la Révolution Française. </p>
-      <p class="commentaire">Nombre de commentaires: 240</p>
-       <button class="add-to-cart" type="button">Ajouter au panier</button>
-        </div>
-    </div>
-
-
-
-    <div class="livre">
-  <h1> Quatrevingt-treize</h1>
-
-<div>
-<img class="img" src="{{ asset('img/book.png')}} ">
-</div>
-
-      <h2> {{livres[0].titre}}</h2>
-      <p>Roman de Victor Hugo sur la Révolution Française. </p>
-      <p class="commentaire">Nombre de commentaires: 240</p>
-       <button class="add-to-cart" type="button">Ajouter au panier</button>
-        </div>
-    </div>
-
-
-
-    <div class="livre">
-  <h1> Quatrevingt-treize</h1>
-
-<div>
-<img class="img" src="{{ asset('img/book.png')}} ">
-</div>
-
-      <h2> {{livres[0].titre}}</h2>
-      <p>Roman de Victor Hugo sur la Révolution Française. </p>
-      <p class="commentaire">Nombre de commentaires: 240</p>
-       <button class="add-to-cart" type="button">Ajouter au panier</button>
-        </div>
-    </div>
-
-
-
-    <div class="livre">
-  <h1> Quatrevingt-treize</h1>
-
-<div>
-<img class="img" src="{{ asset('img/book.png')}} ">
-</div>
-
-      <h2> {{livres[0].titre}}</h2>
-      <p>Roman de Victor Hugo sur la Révolution Française. </p>
-      <p class="commentaire">Nombre de commentaires: 240</p>
-       <button class="add-to-cart" type="button">Ajouter au panier</button>
-        </div>
-    </div>
-
-
-
-    <div class="livre">
-  <h1> Quatrevingt-treize</h1>
-
-<div>
-<img class="img" src="{{ asset('img/book.png')}} ">
-</div>
-
-      <h2> {{livres[0].titre}}</h2>
-      <p>Roman de Victor Hugo sur la Révolution Française. </p>
-      <p class="commentaire">Nombre de commentaires: 240</p>
-       <button class="add-to-cart" type="button">Ajouter au panier</button>
-        </div>
-    </div>
-
-
-
-
-    <div class="livre">
-  <h1> Quatrevingt-treize</h1>
-
-<div>
-<img class="img" src="{{ asset('img/book.png')}} ">
-</div>
-
-      <h2> {{livres[0].titre}}</h2>
-      <p>Roman de Victor Hugo sur la Révolution Française. </p>
-      <p class="commentaire">Nombre de commentaires: 240</p>
-       <button class="add-to-cart" type="button">Ajouter au panier</button>
-        </div>
-    </div>
-
-
-
-    <div class="livre">
-  <h1> Quatrevingt-treize</h1>
-
-<div>
-<img class="img" src="{{ asset('img/book.png')}} ">
-</div>
-
-      <h2> {{livres[0].titre}}</h2>
-      <p>Roman de Victor Hugo sur la Révolution Française. </p>
-      <p class="commentaire">Nombre de commentaires: 240</p>
-       <button class="add-to-cart" type="button">Ajouter au panier</button>
-        </div>
-    </div>
-
-
-
-    <div class="livre">
-  <h1> Quatrevingt-treize</h1>
-
-<div>
-<img class="img" src="{{ asset('img/book.png')}} ">
-</div>
-
-      <h2> {{livres[0].titre}}</h2>
-      <p>Roman de Victor Hugo sur la Révolution Française. </p>
-      <p class="commentaire">Nombre de commentaires: 240</p>
-       <button class="add-to-cart" type="button">Ajouter au panier</button>
-        </div>
-    </div>
-
-         <div class="clear"></div>
-
-
-    <div class="livre">
-  <h1> Quatrevingt-treize</h1>
-
-<div>
-<img class="img" src="{{ asset('img/book.png')}} ">
-</div>
-
-      <h2> {{livres[0].titre}}</h2>
-      <p>Roman de Victor Hugo sur la Révolution Française. </p>
-      <p class="commentaire">Nombre de commentaires: 240</p>
-       <button class="add-to-cart" type="button">Ajouter au panier</button>
-        </div>
-    </div>
-
-
-    <div class="livre">
-  <h1> Quatrevingt-treize</h1>
-
-<div class="item">
-<img class="img" src="{{ asset('img/book.png')}} ">
-</div>
-
-      <h2> {{livres[0].titre}}</h2>
-      <p>Roman de Victor Hugo sur la Révolution Française. </p>
-      <p class="commentaire">Nombre de commentaires: 240</p>
-       <button class="add-to-cart" type="button">Ajouter au panier</button>
-        </div>
-    </div>
-
-
-    <div style="clear: both"></div>
+  <div class="menu">
+    {% for category in categories %}
+     <li class="">{{category.name}}</li>
+    {% endfor %}
   </div>
+  <div class="livre_container">
 
-    <div class="nouvelles">
-      <h1> Nouvelles</h1>
-      <p>La librairie en ligne accueillera bientôt des auteurs en
-	direct.</p>
-      <p>d'autres nouvelles...</p>
-      <p>d'autres nouvelles...</p>
-      <p>d'autres nouvelles...</p>
-      
+  {% for livre in livres %}
+    <div class="livre">
+      <h3> {{livre.titre}} </h3>
+      <img class="img" src="{{ asset('img/book.png')}} ">
+      <div>
+        <p> {{livre.description}} </p>
+        <div class="livre_ajout">
+          <p> {{livre.prix}} &euro;</p>
+          <form action='{{ path('app_panier_ajout') }}' method='POST'>
+            <input type="hidden" name="idLivre" value="{{livre.id}}">
+            <input class="add-to-cart" type="submit" value="Ajouter au panier">
+          </form>
+        </div>
+      </div>
     </div>
-</div>
+  {% endfor %}
+  </div>
 
 
 {% endblock %}

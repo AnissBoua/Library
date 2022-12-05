@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Livre;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -17,6 +18,7 @@ class LivreType extends AbstractType
             ->add('description')
             ->add('prix')
             ->add('auteur')
+            ->add('image', FileType::class)
         ;
     }
 

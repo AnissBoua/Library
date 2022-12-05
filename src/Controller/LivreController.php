@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Livre;
 use App\Form\LivreType;
+use App\Repository\CategoryRepository;
 use App\Repository\LivreRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,10 +15,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class LivreController extends AbstractController
 {
     #[Route('/livre', name: 'app_livre_index', methods: ['GET'])]
-    public function index(LivreRepository $livreRepository): Response
+    public function index(LivreRepository $livreRepository, CategoryRepository $categoryRepository): Response
     {
+        $categories = $categoryRepository->findAll();
         return $this->render('maleklivre/index.html.twig', [
             'livres' => $livreRepository->findAll(),
+            'categories' => $categories,
         ]);
     }
 
