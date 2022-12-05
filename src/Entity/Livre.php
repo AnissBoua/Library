@@ -34,6 +34,9 @@ class Livre
     #[ORM\ManyToMany(targetEntity: panier::class, inversedBy: 'livres')]
     private Collection $panier;
 
+    #[ORM\ManyToOne(inversedBy: 'livres')]
+    private ?Auteur $auteur = null;
+
     public function __construct()
     {
         $this->category = new ArrayCollection();
@@ -137,6 +140,18 @@ class Livre
     public function removePanier(panier $panier): self
     {
         $this->panier->removeElement($panier);
+
+        return $this;
+    }
+
+    public function getAuteur(): ?Auteur
+    {
+        return $this->auteur;
+    }
+
+    public function setAuteur(?Auteur $auteur): self
+    {
+        $this->auteur = $auteur;
 
         return $this;
     }
