@@ -14,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class UserController extends AbstractController
 {
@@ -65,9 +66,13 @@ class UserController extends AbstractController
     }
 
     #[Route('/account', name: 'app_account')]
-    public function account(): Response
+    public function account(UserInterface $userInterface): Response
     {
-        return $this->render('user/account.html.twig');
+        if ($userInterface) {
+            return $this->render('user/account.html.twig');
+        } else {
+            return $this->redirectToRoute('login');
+        }
     }
 
     #[Route('/logout', name: 'app_logout')]
