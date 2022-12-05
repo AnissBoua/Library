@@ -64,6 +64,12 @@ class UserController extends AbstractController
         ]);
     }
 
+    #[Route('/account', name: 'app_account')]
+    public function account(): Response
+    {
+        return $this->render('user/account.html.twig');
+    }
+
     #[Route('/logout', name: 'app_logout')]
     public function logout(){}
 }

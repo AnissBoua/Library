@@ -8,7 +8,7 @@
             <li><a href="{{ path('index') }}">Livres</a></li>
             <li><a href="app_panier"><i class="fa-solid fa-cart-shopping"></i></a></li>
             {% if app.user %}
-            <li class="login_btn logged_drop">{{app.user.nom}}</li>
+            <li class="login_btn logged_drop"><a href="{{ path('app_account') }}">{{app.user.nom}}</a></li>
             {% else %}
             <li class="login_btn"><a href="{{ path('app_login') }}">Login</a></li>
             {% endif %}
