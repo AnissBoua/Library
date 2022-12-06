@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\PanierItem;
 use Doctrine\ORM\EntityManager;
 use App\Repository\LivreRepository;
+use App\Repository\PanierItemRepository;
+use App\Repository\PanierRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,8 +34,9 @@ class PanierController extends AbstractController
         $total = 0;
         foreach ($panierItems as $item) {
             $livre = $item->getLivre();
+            $livre->quantity = $item->getQuantity();
             array_push($livres, $livre);
-            $total += $livre->getPrix();
+            $total += ($livre->getPrix() * $livre->quantity) ;
         }
         
         $userId = $user->getId();
@@ -43,6 +46,7 @@ class PanierController extends AbstractController
             'userID' => $userId,
             'livres'=> $livres,
             "panier" => $panier,
+            "panierItems" => $panierItems,
             'total' => $total,
         ]);
     }
@@ -79,6 +83,45 @@ class PanierController extends AbstractController
         }
 
         return $this->redirectToRoute('app_livre_index');
+    }
+
+    #[Route('/panier/removeItem', name:'app_panier_remove_item', methods:['POST'])]
+    public function removeItem(Request $request, PanierItemRepository $panierItemRepository){
+        $panierItem = $panierItemRepository->find($request->request->get('panierItemID'));
+        $panier = $panierItem->getPanier();
+        // dd($panierItem);
+        $panier->removePanierItem($panierItem);
+
+        $this->entityManager->persist($panierItem);
+        $this->entityManager->flush();
+
+        return $this->redirectToRoute('app_panier');
+    }
+
+    #[Route('/panier/minusItem', name:'app_panier_minus_item', methods:['POST'])]
+    public function minusItem(Request $request, PanierItemRepository $panierItemRepository){
+        $panierItem = $panierItemRepository->find($request->request->get('panierItemID'));
+        $panierItem->setQuantity($panierItem->getQuantity() - 1);
+
+        if ($panierItem->getQuantity() <= 0) {
+            $panier = $panierItem->getPanier();
+            $panier->removePanierItem($panierItem);
+        }
+
+        $this->entityManager->persist($panierItem);
+        $this->entityManager->flush();
+        
+        return $this->redirectToRoute('app_panier');
+    }
+
+    #[Route('/panier/plusItem', name:'app_panier_plus_item', methods:['POST'])]
+    public function plusItem(Request $request, PanierItemRepository $panierItemRepository){
+        $panierItem = $panierItemRepository->find($request->request->get('panierItemID'));
+        $panierItem->setQuantity($panierItem->getQuantity() + 1);
+        $this->entityManager->persist($panierItem);
+        $this->entityManager->flush();
+        
+        return $this->redirectToRoute('app_panier');
     }
 }
 

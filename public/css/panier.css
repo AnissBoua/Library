@@ -1,0 +1,87 @@
+.panier{
+    margin: 2em 5em;
+}
+
+.panier_wrapper{
+    display: flex;
+}
+
+.panier_produits{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 80%;
+}
+
+.produit{
+    border: 3px solid #722a1b;
+    border-radius: 0.5em;
+    background-color: #fff;
+    padding: 10px;
+    margin: 0 10px 10px 0;
+}
+
+.produit_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.produit_delete{
+    border: 0;
+    background-color: #c11a2a;
+    color: white;
+    border-radius: 50%;
+    padding: 0.4em 0.7em;
+}
+
+.produit_body{
+    display: flex;
+}
+
+.produit_info_container{
+    flex: auto;
+    padding: 0 1em;
+}
+.produit_info{
+    display: flex;
+    justify-content: space-between;
+}
+
+.produit_quantity_container{
+    display: flex;
+    flex-direction: column;
+}
+
+.produit_quantity_wrap{
+    display: flex;
+    align-items: center;
+}
+
+.produit_quantity_block{
+    border: 0;
+    background-color: #C7C6C1;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    margin: 0 0.2em;
+}
+
+.produit_quantity{
+    margin: 0 1em;
+}
+
+.panier_commande{
+    border: 0.1em solid black;
+    border-radius: 0.5em;
+    height: fit-content;
+    padding: 1em;
+}
+
+.btn_commande{
+    font-family: 'Rubik', sans-serif;
+    border: 0;
+    border-radius: 0.5em;
+    background-color: black;
+    cursor: pointer;
+    color: white;
+    padding: 1em 2em;
+}

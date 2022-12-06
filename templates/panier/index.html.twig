@@ -3,22 +3,64 @@
 {% block title %}Hello PanierController!{% endblock %}
 
 {% block body %}
-<div>
+<div class="panier">
     <h1>Mon panier</h1>
-    {% for livre in livres %}
-        <div class="livre">
-            <h3> {{livre.titre}} </h3>
-            <img class="img" src="{{ asset('img/book.png')}} ">
-            <div>
-            <p> {{livre.description}} </p>
-            <div class="livre_ajout">
-                <p> {{livre.prix}} &euro;</p>
-            </div>
-            </div>
+    <div class="panier_wrapper">
+        <div class="panier_produits">
+            {% for item in panierItems %}
+                <div class="produit">
+                    <div class="produit_header">
+                        <h3> {{item.Livre.titre}} </h3>
+                        <form action="{{ path('app_panier_remove_item')}}" method="post">
+                            <input type="hidden" name="panierItemID" value="{{item.id}}">
+                            <input type="hidden" name="panierID" value="{{panier.id}}">
+                            <button class="produit_delete" type="submit">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="produit_body">
+                        <img class="img" src="{{ item.Livre.image ? asset('img/livre/' ~ item.Livre.image) : asset('img/book.png') }}">
+                        <div class="produit_info_container">
+                            <div class='produit_info'>
+                                <p> {{item.Livre.description}} </p>
+                                <div>
+                                    <p> <strong>Prix :</strong> {{item.Livre.prix}} &euro;</p>
+                                </div>
+                            </div>
+                            <div class="produit_quantity_container">
+                                <p><strong>Quantité</strong></p>
+                                <div class="produit_quantity_wrap">
+                                    <form action="{{path('app_panier_minus_item')}}" method="post">
+                                        <input type="hidden" name="panierItemID" value="{{item.id}}">
+                                        <button class="produit_quantity_block" type="submit">
+                                            <i class="fa-solid fa-minus"></i>
+                                        </button>
+                                    </form>
+                                    <div class="produit_quantity">
+                                        <p>{{item.quantity}}</p>
+                                    </div>
+                                    <form action="{{path('app_panier_plus_item')}}" method="post">
+                                        <input type="hidden" name="panierItemID" value="{{item.id}}">
+                                        <button class="produit_quantity_block" type="submit">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
-    <div>
-     <p> Total:  {{total}} &euro; </p>
-    </div> 
+        <div class="panier_commande">
+            <p> Le total de votre panier:  {{total}} &euro; </p>
+            <form action="">
+                <input type="hidden" name="total">
+                <button class='btn_commande' type="submit">Commander</button>
+            </form>
+        </div> 
+    </div>
 </div>
 {% endblock %}

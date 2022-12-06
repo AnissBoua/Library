@@ -47,6 +47,7 @@
 
 .livre_container{
   display: flex;
+  flex-wrap: wrap;
   margin: 1em 5em;
 }
 .livre{
