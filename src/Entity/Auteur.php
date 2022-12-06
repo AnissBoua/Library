@@ -27,6 +27,10 @@ class Auteur
     #[ORM\OneToMany(mappedBy: 'auteur', targetEntity: Livre::class)]
     private Collection $livres;
 
+    public function __toString(){
+        return $this->nom;
+    }
+
     public function __construct()
     {
         $this->livres = new ArrayCollection();
