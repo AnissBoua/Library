@@ -5,8 +5,13 @@
     <nav class="nav">
         <ul class="nav_list">
             <li><a href="{{ path('index') }}">Home</a></li>
-            <li><a href="{{ path('index') }}">Livres</a></li>
-            <li><a href="{{ path('app_panier')}}"><i class="fa-solid fa-cart-shopping"></i></a></li>
+            <li><a href="{{ path('app_livre_index') }}">Livres</a></li>
+            <li class="nav_list_panier">
+                <a href="{{ path('app_panier')}}"><i class="fa-solid fa-cart-shopping"></i></a>
+                <div class="list_panier_count">
+                    {{app.user.panier.panierItems|length}}
+                </div>
+            </li>
             {% if app.user %}
             <li class="login_btn logged_drop"><a href="{{ path('app_account') }}">{{app.user.nom}}</a></li>
             {% else %}

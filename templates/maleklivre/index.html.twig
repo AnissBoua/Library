@@ -12,20 +12,20 @@
   <div class="livre_container">
 
   {% for livre in livres %}
-    <div class="livre">
-      <h3> {{livre.titre}} </h3>
-      <img class="img" src="{{ asset('img/book.png')}} ">
-      <div>
-        <p> {{livre.description}} </p>
-        <div class="livre_ajout">
-          <p> {{livre.prix}} &euro;</p>
-          <form action='{{ path('app_panier_ajout') }}' method='POST'>
-            <input type="hidden" name="idLivre" value="{{livre.id}}">
-            <input class="add-to-cart" type="submit" value="Ajouter au panier">
-          </form>
+      <a class="livre" href="{{ path('app_livre_show', { 'id': livre.id }) }}">
+        <h3> {{livre.titre}} </h3>
+        <img class="img" src="{{ livre.image ? asset('img/livre/' ~ livre.image) : asset('img/book.png') }}">
+        <div>
+          <p> {{livre.description}} </p>
+          <div class="livre_ajout">
+            <p> {{livre.prix}} &euro;</p>
+            <form action='{{ path('app_panier_ajout') }}' method='POST'>
+              <input type="hidden" name="idLivre" value="{{livre.id}}">
+              <input class="add-to-cart" type="submit" value="Ajouter au panier">
+            </form>
+          </div>
         </div>
-      </div>
-    </div>
+      </a>
   {% endfor %}
   </div>
 
