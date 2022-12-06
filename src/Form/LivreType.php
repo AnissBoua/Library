@@ -17,6 +17,7 @@ class LivreType extends AbstractType
             ->add('date')
             ->add('description')
             ->add('prix')
+            ->add('category')
             ->add('auteur')
             ->add('image', FileType::class)
         ;
