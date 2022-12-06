@@ -11,9 +11,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class LivreController extends AbstractController
 {
+    public function __construct(ParameterBagInterface $parameterBag)
+    {
+        $this->parameterBag = $parameterBag;
+    }
+    
     #[Route('/livre', name: 'app_livre_index', methods: ['GET'])]
     public function index(LivreRepository $livreRepository, CategoryRepository $categoryRepository): Response
     {
@@ -50,6 +56,14 @@ class LivreController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $img = $form['image']->getData();
+            $imgNewName = explode('.', $img->getClientOriginalName())[0] . '-' . strtotime(date('Y-m-d H:i:s')) . '.' . $img->guessExtension();
+            $directory = $this->parameterBag->get('kernel.project_dir') . "\public\img\livre";
+
+            $img->move($directory, $imgNewName);
+
+            $livre->setImage($imgNewName);
+
             $livreRepository->save($livre, true);
 
             return $this->redirectToRoute('admin_app_livre_index', [], Response::HTTP_SEE_OTHER);
