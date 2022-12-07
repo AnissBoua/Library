@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    <div>
+    <div class="account_block">
         <h1>Your Account</h1>
         <div>
             <p>{{app.user.nom}}</p>
@@ -12,8 +12,8 @@
             <p>{{app.user.email}}</p>
         </div>
         {% if 'ROLE_ADMIN' in app.user.roles %}
-            <a href="{{ path('app_dashboard')}}"><button>Dashboard</button></a>
+            <a href="{{ path('app_dashboard')}}"><button class="account_btn primary_font" >Dashboard</button></a>
         {% endif %}
-        
+        <a href="{{ path('app_logout')}}"><button  class="account_btn primary_font">Logout</button></a>
     </div>
 {% endblock %}

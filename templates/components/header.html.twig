@@ -8,9 +8,12 @@
             <li><a href="{{ path('app_livre_index') }}">Livres</a></li>
             <li class="nav_list_panier">
                 <a href="{{ path('app_panier')}}"><i class="fa-solid fa-cart-shopping"></i></a>
-                <div class="list_panier_count">
-                    {{app.user.panier.panierItems|length}}
-                </div>
+                {% if app.user %}
+                    <div class="list_panier_count">
+                        {{app.user.panier.panierItems|length}}
+                    </div>
+                {% endif %}
+                
             </li>
             {% if app.user %}
             <li class="login_btn logged_drop"><a href="{{ path('app_account') }}">{{app.user.nom}}</a></li>

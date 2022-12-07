@@ -40,9 +40,10 @@
 }
 
 .img{
-    width: 120px;
-     margin: 5px;
-
+  width: 100%;
+  height: 10em;
+  object-fit: cover;
+  object-position: top;
 }
 
 .livre_container{
@@ -51,11 +52,12 @@
   margin: 1em 5em;
 }
 .livre{
-    border: 3px solid #722a1b;
-    background-color: #fff;
-    margin: 0 10px 10px 0;
-    width: 205px;
-    padding: 10px;
+  max-height: 20em;
+  border: 3px solid #722a1b;
+  background-color: #fff;
+  margin: 0 10px 10px 0;
+  width: 205px;
+  padding: 10px;
 }
 
 .livre_ajout{

@@ -1,14 +1,6 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Hello AdminController!{% endblock %}
-
-{% block body %}
-
 <div class="admin">
     <h3>Admin</h3>
     <a class="admin_link" href="{{ path('admin_app_livre_index') }}">Livre</a>
     <a class="admin_link" href="{{ path('admin_app_category_index') }}">Category</a>
     <a class="admin_link" href="{{ path('admin_app_auteur_index') }}">Auteur</a>
 </div>
-
-{% endblock %}

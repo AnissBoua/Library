@@ -20,7 +20,7 @@
                         </form>
                     </div>
                     <div class="produit_body">
-                        <img class="img" src="{{ item.Livre.image ? asset('img/livre/' ~ item.Livre.image) : asset('img/book.png') }}">
+                        <img class="produit_img" src="{{ item.Livre.image ? asset('img/livre/' ~ item.Livre.image) : asset('img/book.png') }}">
                         <div class="produit_info_container">
                             <div class='produit_info'>
                                 <p> {{item.Livre.description}} </p>
