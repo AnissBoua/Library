@@ -3,6 +3,8 @@
 {% block title %}Auteur index{% endblock %}
 
 {% block body %}
+    {% include 'admin/components/nav.html.twig' %}
+<div class="admin">
     <h1>Auteur index</h1>
 
     <table class="table">
@@ -36,4 +38,5 @@
     </table>
 
     <a href="{{ path('app_auteur_new') }}">Create new</a>
+</div>
 {% endblock %}

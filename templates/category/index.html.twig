@@ -3,6 +3,8 @@
 {% block title %}Category index{% endblock %}
 
 {% block body %}
+    {% include 'admin/components/nav.html.twig' %}
+<div class="admin">
     <h1>Category index</h1>
 
     <table class="table">
@@ -32,4 +34,5 @@
     </table>
 
     <a href="{{ path('app_category_new') }}">Create new</a>
+</div>
 {% endblock %}

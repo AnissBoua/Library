@@ -5,51 +5,34 @@
 {% block body %}
 
 <div class="switch_buttons">
-
-
-
-
-<div class="livre_wrapper">
-<a href="#" class="previous round"><span>&#8249;&#8249;</span></a>
-
-
-{% for livre in livres %}
-    <div class="livre">
-      <h3> {{livre.titre}} </h3>
-      <img class="img" src="{{ asset('img/book.png')}} ">
-      <div>
-        <p> {{livre.description}} </p>
-        <div class="livre_ajout">
-          <p> {{livre.prix}} &euro;</p>
-          <form action='{{ path('app_panier_ajout') }}' method='POST'>
-            <input type="hidden" name="idLivre" value="{{livre.id}}">
-            <input class="add-to-cart" type="submit" value="Ajouter au panier">
-          </form>
-        </div>
-      </div>
+  <div class="home_wrapper">
+    <form action="{{path('index')}}">
+      <input type="hidden" name="page" value="{{page - 1}}">
+      <button class="previous round" type="submit"><span>&#8249;&#8249;</span></button>
+    </form>
+    <div class="livre_wrapper">
+      {% for livre in livres %}
+          <a class="livre" href="{{ path('app_livre_show', { 'id': livre.id }) }}">
+            <h3> {{livre.titre}} </h3>
+            <img class="img" src="{{ livre.image ? asset('img/livre/' ~ livre.image) : asset('img/book.png') }}">
+            <div>
+              <p> {{livre.description}} </p>
+              <div class="livre_ajout">
+                <p> {{livre.prix}} &euro;</p>
+                <form action='{{ path('app_panier_ajout') }}' method='POST'>
+                  <input type="hidden" name="idLivre" value="{{livre.id}}">
+                  <input class="add-to-cart" type="submit" value="Ajouter au panier">
+                </form>
+              </div>
+            </div>
+          </a>
+      {% endfor %}
     </div>
-  {% endfor %}
-
-<a href="#" class="next round"><span>&#8250;&#8250;</span></a>
-
-
+    <form action="{{path('index')}}">
+      <input type="hidden" name="page" value="{{page + 1}}">
+      <button class="next round" type="submit"><span>&#8250;&#8250;</span></button>
+    </form>
+  </div>
 </div>
-
-</div>
-
-
-<style>
-        .livre_wrapper {
-    background: linear-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0.60)), url('../img/indexbkg.png') repeat 0 0;
-    
-        }
-</style>
-
-
-  
-
-
-
-
 {% endblock %}
 

@@ -7,3 +7,17 @@ a{
     color: inherit;
     text-decoration: none;
 }
+
+.primary_font{
+    font-family: 'Rubik', sans-serif;
+}
+
+.link_sourline{
+    text-decoration: underline;
+    text-decoration-color: #73C2FB;
+    
+}
+
+.link_sourline:hover{
+    color: #73C2FB;
+}

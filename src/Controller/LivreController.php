@@ -83,6 +83,14 @@ class LivreController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $img = $form['image']->getData();
+            $imgNewName = explode('.', $img->getClientOriginalName())[0] . '-' . strtotime(date('Y-m-d H:i:s')) . '.' . $img->guessExtension();
+            $directory = $this->parameterBag->get('kernel.project_dir') . "\public\img\livre";
+
+            $img->move($directory, $imgNewName);
+
+            $livre->setImage($imgNewName);
+            
             $livreRepository->save($livre, true);
 
             return $this->redirectToRoute('admin_app_livre_index', [], Response::HTTP_SEE_OTHER);

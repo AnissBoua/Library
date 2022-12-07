@@ -38,6 +38,12 @@
     display: flex;
 }
 
+.produit_img{
+    width: 20%;
+    height: 10em;
+    object-fit: cover;
+    object-position: top;
+}
 .produit_info_container{
     flex: auto;
     padding: 0 1em;
